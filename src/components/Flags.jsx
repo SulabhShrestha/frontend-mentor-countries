@@ -2,7 +2,6 @@ import { useEffect, useContext } from "react";
 import FlagCard from "./FlagCard";
 import { CountryContext } from "../Context/FlagContext";
 import Paginate from "./Paginate";
-import { PaginateContext } from "../Context/PaginateContext";
 
 function Flags() {
   const { allCountries, fetchAllCountries, countries } =
