@@ -1,9 +1,36 @@
+import { useContext } from "react";
+import { CountryContext } from "../Context/FlagContext";
+import { PaginateContext } from "../Context/PaginateContext";
+
 function Paginate() {
+  const { allCountries } = useContext(CountryContext);
+  const { currentPage, setCurrentPage, itemsToDisplayPerPage } =
+    useContext(PaginateContext);
+
+  // how many items to be displayed on the page
+
+  const noOfPages = Math.ceil(allCountries.data.length / itemsToDisplayPerPage);
+
   return (
-    <div className="join grid grid-cols-7 w-3/5">
+    <div className="w-full">
       <button className="join-item btn btn-outline z-10">Previous</button>
-      <button className="join-item btn">1</button>
-      <button className="join-item btn">2</button>
+      {Array.from({ length: noOfPages }, (_, index) => {
+        return (
+          <button
+            key={index}
+            className={`join-item btn w-12  ${
+              currentPage === index + 1
+                ? "bg-blue-400 text-black"
+                : "btn-outline"
+            }`}
+            onClick={() => {
+              setCurrentPage(index + 1);
+            }}
+          >
+            {index + 1}
+          </button>
+        );
+      })}
       <button className="join-item btn btn-outline">Next</button>
     </div>
   );

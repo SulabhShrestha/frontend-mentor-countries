@@ -1,13 +1,28 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { PaginateContext } from "./PaginateContext";
 
-const CountryContext = React.createContext();
+const CountryContext = createContext();
 
 function CountryProvider({ children }) {
-  const [countries, setCountries] = React.useState({
+  // all countries list is stored here
+  const [allCountries, setAllCountries] = useState({
     isLoading: true,
     data: [],
   });
+
+  // that will be displayed to the user,
+  // depending upon the current page
+  const [countries, setCountries] = useState([]);
+
+  const { itemsToDisplayPerPage, currentPage } = useContext(PaginateContext);
+
+  // updating displaying countries list
+  useEffect(() => {
+    const startIndex = (currentPage - 1) * itemsToDisplayPerPage;
+    const endIndex = startIndex + itemsToDisplayPerPage;
+    setCountries(allCountries.data.slice(startIndex, endIndex));
+  }, [currentPage, itemsToDisplayPerPage, allCountries]);
 
   // returns all countries
   async function fetchAllCountries() {
@@ -15,13 +30,13 @@ function CountryProvider({ children }) {
       method: "GET",
       url: "https://restcountries.com/v3.1/all",
     });
-    setCountries({ isLoading: false, data: [].concat(...response.data) });
-
-    console.log(typeof countries.data);
+    setAllCountries({ isLoading: false, data: [].concat(...response.data) });
   }
 
   return (
-    <CountryContext.Provider value={{ countries, fetchAllCountries }}>
+    <CountryContext.Provider
+      value={{ allCountries, countries, fetchAllCountries }}
+    >
       {children}
     </CountryContext.Provider>
   );

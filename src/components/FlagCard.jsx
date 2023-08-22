@@ -1,5 +1,4 @@
 function FlagCard({ details }) {
-  console.log(typeof details.capital, details.name.common);
   return (
     <div className="card text-left bg-dark-blue">
       <img
