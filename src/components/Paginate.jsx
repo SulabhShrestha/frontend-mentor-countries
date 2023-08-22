@@ -15,12 +15,20 @@ function Paginate() {
   return (
     <div className="w-full">
       <HashLink smooth to={"#search"}>
-        <button className="join-item btn btn-outline z-10">Previous</button>
+        <button
+          className="btn btn-outline z-10"
+          disabled={currentPage === 1}
+          onClick={() => {
+            setCurrentPage(currentPage - 1);
+          }}
+        >
+          Previous
+        </button>
         {Array.from({ length: noOfPages }, (_, index) => {
           return (
             <button
               key={index}
-              className={`join-item btn w-12  ${
+              className={`btn w-12  ${
                 currentPage === index + 1
                   ? "bg-blue-400 text-black"
                   : "btn-outline"
@@ -33,7 +41,15 @@ function Paginate() {
             </button>
           );
         })}
-        <button className="join-item btn btn-outline">Next</button>
+        <button
+          className="btn btn-outline"
+          disabled={currentPage === noOfPages}
+          onClick={() => {
+            setCurrentPage(currentPage + 1);
+          }}
+        >
+          Next
+        </button>
       </HashLink>
     </div>
   );
