@@ -33,11 +33,11 @@ function SearchAndFilter() {
         <option disabled selected>
           Filter by Region
         </option>
-        <option>Homer</option>
-        <option>Marge</option>
-        <option>Bart</option>
-        <option>Lisa</option>
-        <option>Maggie</option>
+        <option>Africa</option>
+        <option>America</option>
+        <option>Asia</option>
+        <option>Europe</option>
+        <option>Oceania</option>
       </select>
     </div>
   );
