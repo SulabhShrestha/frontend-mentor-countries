@@ -1,6 +1,6 @@
 import { useEffect, useContext } from "react";
 import FlagCard from "./FlagCard";
-import { CountryContext } from "../Context/FlagContext";
+import { CountryContext } from "../Context/CountryContext";
 import Paginate from "./Paginate";
 
 function Flags() {

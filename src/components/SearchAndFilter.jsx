@@ -1,10 +1,10 @@
 function SearchAndFilter() {
   return (
-    <div className="search-and-filter flex justify-between" id="search">
+    <div className="search-and-filter flex justify-between my-4" id="search">
       {/* search */}
       <div className="form-control">
-        <div className="input-group">
-          <button className="btn btn-square">
+        <div className="input-group ">
+          <button className="btn btn-square dark:bg-dark-blue bg-very-light-gray shadow-md">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -23,13 +23,13 @@ function SearchAndFilter() {
           <input
             type="text"
             placeholder="Search for a country"
-            className="input "
+            className="input dark:bg-dark-blue bg-very-light-gray shadow-md"
           />
         </div>
       </div>
 
       {/* filter by region */}
-      <select className="select max-w-xs">
+      <select className="select max-w-xs dark:bg-dark-blue bg-very-light-gray shadow-md">
         <option disabled selected>
           Filter by Region
         </option>

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CountryContext } from "../Context/FlagContext";
+import { CountryContext } from "../Context/CountryContext";
 import { PaginateContext } from "../Context/PaginateContext";
 import { HashLink } from "react-router-hash-link";
 
@@ -14,9 +14,9 @@ function Paginate() {
 
   return (
     <div className="w-full">
-      <HashLink smooth to={"#search"}>
+      <HashLink smooth to={currentPage === 1 ? "" : "#search"}>
         <button
-          className="btn btn-outline z-10"
+          className="btn btn-primary z-10 mr-2"
           disabled={currentPage === 1}
           onClick={() => {
             setCurrentPage(currentPage - 1);
@@ -24,11 +24,13 @@ function Paginate() {
         >
           Previous
         </button>
+      </HashLink>
+      <HashLink smooth to={"#search"}>
         {Array.from({ length: noOfPages }, (_, index) => {
           return (
             <button
               key={index}
-              className={`btn w-12  ${
+              className={`btn w-10 hover:bg-slate-400 ${
                 currentPage === index + 1
                   ? "bg-blue-400 text-black"
                   : "btn-outline"
@@ -41,8 +43,11 @@ function Paginate() {
             </button>
           );
         })}
+      </HashLink>
+
+      <HashLink smooth to={currentPage === noOfPages ? "" : "#search"}>
         <button
-          className="btn btn-outline"
+          className="btn btn-primary ml-2"
           disabled={currentPage === noOfPages}
           onClick={() => {
             setCurrentPage(currentPage + 1);
