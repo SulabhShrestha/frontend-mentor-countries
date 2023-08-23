@@ -2,11 +2,10 @@ import { useContext } from "react";
 import "./App.css";
 import CountryProvider from "./Context/CountryContext";
 import PaginateProvider, { PaginateContext } from "./Context/PaginateContext";
-import Flags from "./components/Flags";
 import Header from "./components/Header";
-import SearchAndFilter from "./components/SearchAndFilter";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ThemeContext } from "./Context/ThemeContext";
+import Homepage from "./pages/Homepage";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -17,10 +16,7 @@ function App() {
         <Router>
           <PaginateProvider>
             <CountryProvider>
-              <main>
-                <SearchAndFilter />
-                <Flags />
-              </main>
+              <Homepage />
             </CountryProvider>
           </PaginateProvider>
         </Router>
