@@ -10,7 +10,7 @@ function Header() {
 
   const { setTheme } = useContext(ThemeContext);
   return (
-    <header className="flex items-center justify-between dark:bg-dark-blue shadow-md bg-very-light-gray py-6 ">
+    <header className="flex items-center justify-between dark:bg-dark-blue shadow-md bg-very-light-gray py-6 px-[4%]">
       <h1 className="text-2xl font-semibold ">Where in the world?</h1>
 
       <div

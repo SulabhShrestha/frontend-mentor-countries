@@ -3,9 +3,11 @@ import "./App.css";
 import CountryProvider from "./Context/CountryContext";
 import PaginateProvider, { PaginateContext } from "./Context/PaginateContext";
 import Header from "./components/Header";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Routes } from "react-router-dom";
 import { ThemeContext } from "./Context/ThemeContext";
 import Homepage from "./pages/Homepage";
+import { Route } from "react-router-dom";
+import CountryDetails from "./pages/CountryDetails";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -16,7 +18,11 @@ function App() {
         <Router>
           <PaginateProvider>
             <CountryProvider>
-              <Homepage />
+              <Routes>
+                <Route exact path="/" element={<Homepage />} />
+
+                <Route path="/:country" element={<CountryDetails />} />
+              </Routes>
             </CountryProvider>
           </PaginateProvider>
         </Router>

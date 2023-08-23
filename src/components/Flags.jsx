@@ -17,7 +17,7 @@ function Flags() {
 
   return (
     <>
-      <div className="Flags grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-12">
+      <div className="Flags grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-12 px-[4%]">
         {countries.map((country, index) => {
           return <FlagCard key={index} details={country} />;
         })}

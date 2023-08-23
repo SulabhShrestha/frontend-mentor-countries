@@ -1,6 +1,9 @@
 function SearchAndFilter() {
   return (
-    <div className="search-and-filter flex justify-between my-4" id="search">
+    <div
+      className="search-and-filter flex justify-between my-4 px-[4%]"
+      id="search"
+    >
       {/* search */}
       <div className="form-control">
         <div className="input-group shadow-md">
