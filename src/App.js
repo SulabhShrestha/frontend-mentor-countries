@@ -20,7 +20,6 @@ function App() {
             <CountryProvider>
               <Routes>
                 <Route exact path="/" element={<Homepage />} />
-
                 <Route path="/:country" element={<CountryDetails />} />
               </Routes>
             </CountryProvider>
