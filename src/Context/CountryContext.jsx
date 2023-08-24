@@ -45,6 +45,15 @@ function CountryProvider({ children }) {
     setCountries(queryCountryDetails);
   }
 
+  // filters by region
+  function filterByRegion(region) {
+    const queryCountryDetails = allCountries.data.filter(
+      (country) => country.region === region
+    );
+
+    setCountries(queryCountryDetails);
+  }
+
   return (
     <CountryContext.Provider
       value={{
@@ -52,6 +61,7 @@ function CountryProvider({ children }) {
         countries,
         fetchAllCountries,
         searchSpecificCountry,
+        filterByRegion,
       }}
     >
       {children}

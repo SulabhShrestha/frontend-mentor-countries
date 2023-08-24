@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { CountryContext } from "../Context/CountryContext";
 
 function SearchAndFilter() {
-  const { searchSpecificCountry } = useContext(CountryContext);
+  const { searchSpecificCountry, filterByRegion } = useContext(CountryContext);
 
   function searchCountry(e) {
     e.preventDefault();
@@ -43,7 +43,10 @@ function SearchAndFilter() {
       </div>
 
       {/* filter by region */}
-      <select className="select max-w-xs dark:bg-dark-blue bg-very-light-gray shadow-md dark:text-white text-black">
+      <select
+        className="select max-w-xs dark:bg-dark-blue bg-very-light-gray shadow-md dark:text-white text-black"
+        onChange={(e) => filterByRegion(e.target.value)}
+      >
         <option disabled selected>
           Filter by Region
         </option>
