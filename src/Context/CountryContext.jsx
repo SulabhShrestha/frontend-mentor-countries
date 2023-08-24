@@ -33,9 +33,26 @@ function CountryProvider({ children }) {
     setAllCountries({ isLoading: false, data: [].concat(...response.data) });
   }
 
+  // searches specific country
+  function searchSpecificCountry(countryName) {
+    console.log(countryName);
+    const queryCountryDetails = allCountries.data.filter((country) =>
+      country.name.common.toLowerCase().includes(countryName)
+    );
+
+    console.log(queryCountryDetails);
+
+    setCountries(queryCountryDetails);
+  }
+
   return (
     <CountryContext.Provider
-      value={{ allCountries, countries, fetchAllCountries }}
+      value={{
+        allCountries,
+        countries,
+        fetchAllCountries,
+        searchSpecificCountry,
+      }}
     >
       {children}
     </CountryContext.Provider>

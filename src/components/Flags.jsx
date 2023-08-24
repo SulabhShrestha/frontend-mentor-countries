@@ -15,9 +15,13 @@ function Flags() {
     return <span className="loading loading-spinner text-error"></span>;
   }
 
+  if (!countries) {
+    return <p>Nothing found!</p>;
+  }
+
   return (
     <>
-      <div className="Fflags grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-12 px-[4%]">
+      <div className="flags grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-12 px-[4%]">
         {countries.map((country, index) => {
           return <FlagCard key={index} details={country} />;
         })}

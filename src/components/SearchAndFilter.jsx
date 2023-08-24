@@ -1,4 +1,14 @@
+import { useContext } from "react";
+import { CountryContext } from "../Context/CountryContext";
+
 function SearchAndFilter() {
+  const { searchSpecificCountry } = useContext(CountryContext);
+
+  function searchCountry(e) {
+    e.preventDefault();
+    searchSpecificCountry(e.target.value);
+  }
+
   return (
     <div
       className="search-and-filter flex justify-between my-4 px-[4%]"
@@ -27,6 +37,7 @@ function SearchAndFilter() {
             type="text"
             placeholder="Search for a country"
             className="input dark:bg-dark-blue bg-very-light-gray"
+            onChange={searchCountry}
           />
         </div>
       </div>
